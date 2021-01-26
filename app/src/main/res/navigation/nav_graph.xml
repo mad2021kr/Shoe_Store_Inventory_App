@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/login_frgament"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/login_frgament"
+        android:name="org.worldskills.shoestoreinventoryapp.LoginFragment"
+        android:label="Login Fragment"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_login_frgament_to_welcome_fragment"
+            app:destination="@id/welcome_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/welcome_fragment"
+        android:name="org.worldskills.shoestoreinventoryapp.WelcomeFragment"
+        android:label="Welcome Fragment"
+        tools:layout="@layout/welcome_fragment">
+        <action
+            android:id="@+id/action_welcome_fragment_to_instruction_frgament"
+            app:destination="@id/instruction_frgament" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/instruction_frgament"
+        android:name="org.worldskills.shoestoreinventoryapp.InstructionFragment"
+        android:label="Instruction Fragment"
+        tools:layout="@layout/instruction_fragment">
+        <action
+            android:id="@+id/action_instruction_frgament_to_shoe_list_frgament"
+            app:destination="@id/shoe_list_frgament" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/shoe_list_frgament"
+        android:name="org.worldskills.shoestoreinventoryapp.ShoeListFragment"
+        android:label="Shoe List Fragment"
+        tools:layout="@layout/shoe_list_fragment">
+        <action
+            android:id="@+id/action_shoe_list_frgament_to_shoe_detail_fragment"
+            app:destination="@id/shoe_detail_fragment" />
+        <action
+            android:id="@+id/action_shoe_list_frgament_to_login_frgament"
+            app:destination="@id/login_frgament" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/shoe_detail_fragment"
+        android:name="org.worldskills.shoestoreinventoryapp.ShoeDetailFragment"
+        android:label="Shoe Detail Fragment"
+        tools:layout="@layout/shoe_detail_fragment">
+        <action
+            android:id="@+id/action_shoe_detail_fragment_to_shoe_list_frgament"
+            app:destination="@id/shoe_list_frgament" />
+    </fragment>
+</navigation>
