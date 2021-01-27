@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--ConstraintLayout is free-form and it can have the benefit of placement by relative positional relationship.-->
+    <!--So, I usually use ConstraintLayout for parent layout-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,6 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <!--I used it because it has a function that aligns vertically.-->
+            <!--That's how TextViews are dynamically aligned.-->
             <LinearLayout
                 android:id="@+id/add_area"
                 android:layout_width="wrap_content"

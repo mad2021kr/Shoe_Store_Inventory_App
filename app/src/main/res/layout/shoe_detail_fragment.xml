@@ -4,11 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="org.worldskills.shoestoreinventoryapp.ShoeViewModel" />
+    </data>
+
+    <!--ConstraintLayout is free-form and it can have the benefit of placement by relative positional relationship.-->
+    <!--So, I usually use ConstraintLayout for parent layout-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ShoeDetailFragment">
 
+        <!--LinearLayout is The UI elements can be placed in a row, which is used due to the advantage of being able to construct a stable screen.-->
+        <!--This layout is used because it is good to tie the shoe name label and EditText together horizontally.-->
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
@@ -33,6 +43,7 @@
 
         </LinearLayout>
 
+        <!--This layout is also as described in the code comment earlier.-->
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
@@ -57,6 +68,7 @@
 
         </LinearLayout>
 
+        <!--This layout is also as described in the code comment earlier.-->
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="wrap_content"
@@ -77,10 +89,12 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+
                 android:inputType="text" />
 
         </LinearLayout>
 
+        <!--This layout is also as described in the code comment earlier.-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,6 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="Save"
+            android:onClick="@{(v) -> viewModel.addShoeData(nameEditText.getText().toString(), companyEditText.getText().toString(), sizeEditText.getText().toString(), descriptionEditText.getText().toString())}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cancel_btn" />
 
