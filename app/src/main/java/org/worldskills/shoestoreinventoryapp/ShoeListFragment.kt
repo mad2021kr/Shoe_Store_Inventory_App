@@ -2,11 +2,13 @@ package org.worldskills.shoestoreinventoryapp
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.view.*
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
@@ -17,34 +19,47 @@ import java.lang.StringBuilder
 
 class ShoeListFragment : Fragment() {
 
-    private lateinit var viewModel: ShoeViewModel
+    private val viewModel: ShoeViewModel by activityViewModels()
+    private lateinit var binding: ShoeListFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: ShoeListFragmentBinding = DataBindingUtil.inflate(
-            inflater, R.layout.shoe_list_fragment, container, false
-        )
+        binding = DataBindingUtil.inflate(inflater, R.layout.shoe_list_fragment, container, false)
 
-        viewModel = ViewModelProviders.of(this).get(ShoeViewModel::class.java)
+        setHasOptionsMenu(true)
 
         binding.floatingBtn.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_shoe_list_frgament_to_shoe_detail_fragment)
         }
 
         viewModel.shoeMutableList.observe(viewLifecycleOwner, Observer {
-            val result = StringBuilder()
+            for (i in 0 until it.size) {
+                val str = it[i].name + ", " + it[i].company + ", " + it[i].description + ", " + it[i].size
+                val textView = TextView(requireContext())
+                val lp = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                textView.text = str
+                textView.layoutParams = lp
+                textView.id = ViewCompat.generateViewId()
 
-            for (i in 0 until viewModel.shoeMutableList.value!!.size) {
-                result.append(viewModel.shoeMutableList.value!![i].name + ", \n")
+                binding.addArea.addView(textView)
             }
-
-            binding.shoeItemTextView.text = result
         })
 
         return binding.root
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.logout -> Navigation.findNavController(binding.root).navigate(R.id.action_shoe_list_frgament_to_login_frgament)
+        }
 
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_logout, menu)
+    }
 }
