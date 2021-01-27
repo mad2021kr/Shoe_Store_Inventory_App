@@ -7,6 +7,7 @@ import androidx.navigation.Navigation
 import java.lang.StringBuilder
 
 class ShoeViewModel: ViewModel() {
+    var shoeDetail: ShoeDetail = ShoeDetail("", "", "", "")
     private var shoeDataList = ArrayList<ShoeDetail>()
     var shoeMutableList = MutableLiveData<MutableList<ShoeDetail>>()
 
@@ -14,8 +15,8 @@ class ShoeViewModel: ViewModel() {
         resetShoeList()
     }
 
-    fun addShoeData(name: String, company: String, size: String, description: String) {
-        shoeDataList.add(ShoeDetail(name, company, size, description))
+    fun addShoeData(shoeDetail: ShoeDetail) {
+        shoeDataList.add(shoeDetail)
         shoeMutableList.value = shoeDataList
     }
 

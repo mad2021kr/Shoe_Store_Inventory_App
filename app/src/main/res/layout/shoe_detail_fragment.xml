@@ -39,6 +39,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:text="@={viewModel.shoeDetail.name}"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -64,6 +65,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:text="@={viewModel.shoeDetail.company}"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -89,7 +91,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-
+                android:text="@={viewModel.shoeDetail.size}"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -114,6 +116,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:text="@={viewModel.shoeDetail.description}"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -124,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="Save"
-            android:onClick="@{(v) -> viewModel.addShoeData(nameEditText.getText().toString(), companyEditText.getText().toString(), sizeEditText.getText().toString(), descriptionEditText.getText().toString())}"
+            android:onClick="@{(v) -> viewModel.addShoeData(viewModel.shoeDetail)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cancel_btn" />
 
