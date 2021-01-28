@@ -18,6 +18,7 @@ class ShoeViewModel: ViewModel() {
     fun addShoeData(shoeDetail: ShoeDetail) {
         shoeDataList.add(shoeDetail)
         shoeMutableList.value = shoeDataList
+        this.shoeDetail = ShoeDetail("", "", "", "")
     }
 
     private fun resetShoeList() {
